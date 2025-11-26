@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Analogía: Variable como caja de mudanza</title>
+    <style>
+        :root{
+            --bg:#f6fbff;
+            --card:#ffffff;
+            --muted:#6b7280;
+            --accent:#7dd3fc;
+            --shadow: 0 8px 24px rgba(15,23,42,0.06);
+            --radius:14px;
+            --glass: rgba(255,255,255,0.6);
+        }
+
+        html,body{
+            height:100%;
+            margin:0;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(180deg, var(--bg) 0%, #ffffff 100%);
+            color:#0f172a;
+            -webkit-font-smoothing:antialiased;
+        }
+
+        .wrap{
+            max-width:900px;
+            margin:48px auto;
+            padding:28px;
+        }
+
+        .card{
+            background:linear-gradient(180deg, rgba(255,255,255,0.9), var(--card));
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding:28px;
+            transition: transform .35s ease, box-shadow .35s ease;
+            transform-origin: center;
+            animation: popIn .5s ease both;
+        }
+
+        .card:hover{
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(15,23,42,0.08);
+        }
+
+        h1{
+            margin:0 0 8px 0;
+            font-size:1.6rem;
+            letter-spacing:-0.2px;
+        }
+        p.lead{
+            margin:0 0 18px 0;
+            color:var(--muted);
+        }
+
+        .boxes{
+            display:flex;
+            gap:16px;
+            margin:18px 0 12px 0;
+            flex-wrap:wrap;
+        }
+
+        .box{
+            background: linear-gradient(180deg, #ffffff, #fbfdff);
+            border-radius:10px;
+            padding:18px;
+            width:220px;
+            min-height:110px;
+            box-shadow: 0 10px 30px rgba(2,6,23,0.04);
+            position:relative;
+            cursor:pointer;
+            transition: transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .35s;
+            overflow:hidden;
+        }
+
+        .box:before{
+            content:"";
+            position:absolute;
+            right:-40px;
+            top:-40px;
+            width:120px;
+            height:120px;
+            background: radial-gradient(circle at 30% 30%, var(--accent), transparent 40%);
+            opacity:.25;
+            transform: rotate(12deg);
+        }
+
+        .box:hover{
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 22px 48px rgba(2,6,23,0.06);
+        }
+
+        .box h3{
+            margin:0 0 8px 0;
+            font-size:1.05rem;
+        }
+        .box p{
+            margin:0;
+            color:var(--muted);
+            font-size:.95rem;
+            line-height:1.35;
+        }
+
+        .detail{
+            margin-top:16px;
+            padding:12px;
+            border-radius:10px;
+            background: linear-gradient(180deg, rgba(125,211,252,0.06), rgba(125,211,252,0.02));
+            color:#05445E;
+            font-size:.95rem;
+            display:none;
+        }
+
+        /* small floating animation to simulate caja "viva" */
+        @keyframes floaty {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+        }
+
+        .box .icon{
+            width:46px;
+            height:46px;
+            border-radius:10px;
+            background:linear-gradient(180deg,#ecfeff,#f0f9ff);
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            margin-bottom:10px;
+            box-shadow: 0 8px 20px rgba(125,211,252,0.12);
+            animation: floaty 4s ease-in-out infinite;
+        }
+
+        footer{
+            margin-top:18px;
+            color:var(--muted);
+            font-size:.88rem;
+        }
+
+        @keyframes popIn {
+            from { opacity:0; transform: translateY(10px) scale(.995); }
+            to   { opacity:1; transform: translateY(0) scale(1); }
+        }
+
+        /* responsive */
+        @media (max-width:640px){
+            .boxes{ flex-direction:column; }
+            .box{ width:100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="card" role="main" aria-labelledby="title">
+            <h1 id="title">Variable = caja de mudanza (analogía)</h1>
+            <p class="lead">Lee y haz clic en cada “caja” para ver una explicación. La interfaz usa estilos suaves y animaciones ligeras.</p>
+
+            <div class="boxes">
+                <div class="box" tabindex="0" data-target="t1">
+                    <div class="icon">📦</div>
+                    <h3>Etiqueta = nombre</h3>
+                    <p>La etiqueta es el nombre que pones en la caja para encontrarla luego.</p>
+                    <div id="t1" class="detail">En un programa <strong>nombreDeVariable</strong> es la etiqueta. Usas el nombre para leer o cambiar el contenido.</div>
+                </div>
+
+                <div class="box" tabindex="0" data-target="t2">
+                    <div class="icon">🔢</div>
+                    <h3>Contenido = valor</h3>
+                    <p>Dentro de la caja guardas un valor: número, texto o un objeto.</p>
+                    <div id="t2" class="detail">Los valores primitivos (números, textos, booleanos) se copian si pones el contenido en otra caja; cada caja tendrá su propia copia.</div>
+                </div>
+
+                <div class="box" tabindex="0" data-target="t3">
+                    <div class="icon">🔗</div>
+                    <h3>Referencias (objetos)</h3>
+                    <p>Si la caja contiene un objeto, varias etiquetas pueden apuntar a la misma caja.</p>
+                    <div id="t3" class="detail">Cuando dos etiquetas apuntan a la misma caja y modificas el objeto, el cambio se ve desde ambas etiquetas (comparten la misma caja).</div>
+                </div>
+
+                <div class="box" tabindex="0" data-target="t4">
+                    <div class="icon">🛏️</div>
+                    <h3>Ámbito = habitación</h3>
+                    <p>El lugar donde está la caja determina quién puede verla.</p>
+                    <div id="t4" class="detail">Una caja dentro de una función está en otra "habitación" y no es accesible desde afuera — esto es el alcance (scope).</div>
+                </div>
+            </div>
+
+            <p>Resumen rápido:</p>
+            <ul>
+                <li>Variable = etiqueta + caja</li>
+                <li>Primitivos: copiar = duplicar contenido</li>
+                <li>Objetos: copiar etiqueta = apuntar a la misma caja (compartir)</li>
+                <li>let permite cambiar el contenido; const fija la etiqueta</li>
+            </ul>
+
+            <footer>Haz clic en una caja para ver más detalles. Diseño pensado para principiantes.</footer>
+        </div>
+    </div>
+
+    <script>
+        // interacción sencilla sin sintaxis avanzada
+        var boxes = document.querySelectorAll('.box');
+        for (var i = 0; i < boxes.length; i++) {
+            (function(box){
+                box.addEventListener('click', function(){
+                    var id = box.getAttribute('data-target');
+                    var detail = document.getElementById(id);
+                    // alterna visibilidad
+                    if (detail.style.display === 'block') {
+                        detail.style.display = 'none';
+                    } else {
+                        // esconder otras descripciones
+                        var others = document.querySelectorAll('.detail');
+                        for (var j = 0; j < others.length; j++) {
+                            others[j].style.display = 'none';
+                        }
+                        detail.style.display = 'block';
+                    }
+                });
+                // permitir abrir con Enter/Space cuando está enfocado
+                box.addEventListener('keydown', function(e){
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        box.click();
+                    }
+                });
+            })(boxes[i]);
+        }
+    </script>
+</body>
+</html>
