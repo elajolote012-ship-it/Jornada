@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reloj Digital con Alarma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <section class="clock-card">
+      <div class="greeting" id="greeting">Hola</div>
+      <div class="time" id="time">00:00:00</div>
+      <div class="date" id="date">Lunes, 01 de Enero de 1970</div>
+
+      <div class="alarm-controls">
+        <h3>Configurar alarma</h3>
+        <div class="controls-row">
+          <input type="time" id="alarmTimeInput" step="1">
+          <button id="setAlarmBtn">Establecer Alarma</button>
+          <button id="clearAlarmBtn">Cancelar Alarma</button>
+        </div>
+        <div class="status-row">
+          <span class="alarm-indicator" id="alarmIndicator" aria-hidden="true"></span>
+          <span id="alarmStatus">No hay alarma activa</span>
+        </div>
+      </div>
+
+      <div class="notification-area" id="notificationArea" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

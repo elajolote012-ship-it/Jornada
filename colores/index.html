@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generador de Colores Aleatorios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Generador de Colores Aleatorios</h1>
+
+    <div id="colorBox" class="color-box" role="img" aria-label="Muestra de color"></div>
+
+    <div class="controls">
+      <button id="generateBtn" class="btn">Generar Color</button>
+      <button id="copyBtn" class="btn btn-outline">Copiar código</button>
+    </div>
+
+    <p class="hex-text">Color: <span id="hexCode">#FFFFFF</span></p>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!--
+README / Cómo probar:
+- Abrir este archivo `index.html` en un navegador moderno (doble clic o arrastrar a la ventana).
+- Interactuar con los botones o usar el teclado: números, `.` , `Enter` (=), `Backspace`, operadores `+ - * / %`.
+
+Tests manuales sugeridos y criterios de aceptación:
+1) Suma básica: 5 + 3 = → muestra `8` y el historial `5 + 3 = 8`.
+2) Decimales: 2.5 * 4 = → muestra `10` correctamente (sin errores de precisión visibles).
+3) División por cero: 5 / 0 = → muestra `Error` y no bloquea la app.
+4) Porcentaje: 50 % → convierte a `0.5` ; 200 + 10 % (introducir 200 + 10 % =) → comprueba comportamiento esperado (nota: % convierte el valor actual a su forma de porcentaje: 10% → 0.1)
+5) Cambio de signo: 5 +/- → `-5`; luego +/- → `5`.
+6) Clear y Backspace: escribir 123, presionar ← → `12`; `C` vuelve a `0`.
+7) Límite visual: introducir muchos dígitos; la pantalla muestra máximo 12 dígitos visibles y usa notación científica si es necesario.
+8) Teclado: probar con teclado numérico y teclas de operador; `Enter` funciona como `=`.
+
+Aceptación general: La calculadora realiza operaciones fundamentales sin usar `eval()`, es accesible (roles ARIA), responde al teclado y muestra historial de la última operación.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calculadora - Jornada</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="calculator-root" role="application" aria-label="Calculadora" >
+    <h1 class="sr-only">Calculadora simple</h1>
+
+    <section class="calculator" aria-labelledby="calcLabel">
+      <div id="calcLabel" class="visually-hidden">Panel de calculadora</div>
+
+      <div class="display" role="region" aria-live="polite" aria-label="Pantalla de la calculadora">
+        <div id="history" class="history" aria-hidden="false">&nbsp;</div>
+        <div id="output" class="output" aria-atomic="true">0</div>
+      </div>
+
+      <div class="keys" role="group" aria-label="Teclado de la calculadora">
+        <button class="btn fn" data-action="clear" aria-label="Clear (C)">C</button>
+        <button class="btn fn" data-action="backspace" aria-label="Backspace">←</button>
+        <button class="btn fn" data-action="percent" aria-label="Porcentaje">%</button>
+        <button class="btn op" data-action="operator" data-op="/" aria-label="Dividir">÷</button>
+
+        <button class="btn num" data-digit="7">7</button>
+        <button class="btn num" data-digit="8">8</button>
+        <button class="btn num" data-digit="9">9</button>
+        <button class="btn op" data-action="operator" data-op="*" aria-label="Multiplicar">×</button>
+
+        <button class="btn num" data-digit="4">4</button>
+        <button class="btn num" data-digit="5">5</button>
+        <button class="btn num" data-digit="6">6</button>
+        <button class="btn op" data-action="operator" data-op="-" aria-label="Restar">−</button>
+
+        <button class="btn num" data-digit="1">1</button>
+        <button class="btn num" data-digit="2">2</button>
+        <button class="btn num" data-digit="3">3</button>
+        <button class="btn op" data-action="operator" data-op="+" aria-label="Sumar">+</button>
+
+        <button class="btn num" data-digit="0" style="grid-column: span 2;">0</button>
+        <button class="btn num" data-digit=".">.</button>
+        <button class="btn fn" data-action="neg" aria-label="Cambiar signo">+/−</button>
+
+        <button class="btn equals" data-action="equals" aria-label="Igual">=</button>
+      </div>
+
+      <div class="instructions" aria-hidden="false">
+        <strong>Instrucciones rápidas:</strong>
+        - Usa botones o teclado (números, `.` , `Enter` para =, `Backspace`, operadores `+ - * / %`).
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js" ></script>
+</body>
+</html>
