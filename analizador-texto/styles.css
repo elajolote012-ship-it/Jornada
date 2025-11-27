@@ -1,0 +1,65 @@
+:root{
+  --bg:#0f1724;
+  --panel:#0b1220;
+  --muted:#9aa4b2;
+  --accent1:#6ee7b7;
+  --accent2:#60a5fa;
+  --accent3:#fca5a5;
+  --accent4:#f6d365;
+  --card-bg: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  --glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Segoe,Roboto,Helvetica,Arial,sans-serif;
+  background:linear-gradient(180deg,#071022 0%, #081426 60%);
+  color:#e6eef6;
+  -webkit-font-smoothing:antialiased;
+}
+.app{
+  max-width:1000px;
+  margin:32px auto;
+  padding:24px;
+}
+.app-header h1{margin:0;font-size:1.6rem}
+.lead{color:var(--muted);margin-top:6px}
+
+.editor{margin-top:18px}
+textarea#inputText{
+  width:100%;
+  min-height:220px;
+  resize:vertical;
+  padding:18px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.04);
+  background:var(--panel);
+  color:inherit;
+  font-size:1rem;
+  line-height:1.6;
+  box-shadow:0 6px 18px rgba(2,6,23,0.6);
+}
+.controls{display:flex;gap:10px;justify-content:flex-end;margin-top:10px}
+.btn{padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--accent2),var(--accent1));border:none;color:#04212a;font-weight:600}
+
+.stats{margin-top:20px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.card{padding:14px;border-radius:10px;background:var(--card-bg);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.03)}
+.card .label{color:var(--muted);font-size:0.9rem}
+.number{font-size:1.35rem;margin-top:8px;font-weight:700;transition:transform 220ms cubic-bezier(.2,.9,.2,1),opacity 220ms}
+.number.animate{transform:translateY(-6px);opacity:0.85}
+
+.c-chars{border-left:4px solid var(--accent4)}
+.c-chars-no{border-left:4px solid var(--accent3)}
+.c-words{border-left:4px solid var(--accent1)}
+.c-sentences{border-left:4px solid var(--accent2)}
+.c-time{border-left:4px solid #a78bfa}
+
+.notice{margin-top:14px;color:var(--accent3);min-height:1.2em}
+
+@media (max-width:560px){
+  .app{padding:12px}
+  textarea#inputText{min-height:160px}
+}

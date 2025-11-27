@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Analizador de Texto</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Analizador de Texto</h1>
+      <p class="lead">Estadísticas en tiempo real sobre tu texto — escribe o pega contenido abajo.</p>
+    </header>
+
+    <section class="editor">
+      <textarea id="inputText" placeholder="Escribe o pega tu texto aquí..." aria-label="Área de texto para analizar"></textarea>
+
+      <div class="controls">
+        <button id="clearBtn" class="btn">Limpiar</button>
+        <button id="copyBtn" class="btn primary">Copiar estadísticas</button>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stats-grid">
+        <div class="card c-chars">
+          <div class="label">Caracteres (con espacios)</div>
+          <div id="charsWith" class="number">0</div>
+        </div>
+
+        <div class="card c-chars-no">
+          <div class="label">Caracteres (sin espacios)</div>
+          <div id="charsNo" class="number">0</div>
+        </div>
+
+        <div class="card c-words">
+          <div class="label">Palabras</div>
+          <div id="words" class="number">0</div>
+        </div>
+
+        <div class="card c-sentences">
+          <div class="label">Oraciones</div>
+          <div id="sentences" class="number">0</div>
+        </div>
+
+        <div class="card c-time">
+          <div class="label">Tiempo estimado de lectura</div>
+          <div id="readTime" class="number">0 min</div>
+        </div>
+      </div>
+    </section>
+
+    <div id="notice" class="notice" aria-live="polite"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
