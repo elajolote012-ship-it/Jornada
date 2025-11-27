@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Quiz Básico de JavaScript</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <!-- Pantalla de inicio -->
+      <section id="start-screen" class="card center">
+        <h1 class="title">Quiz Básico de JavaScript</h1>
+        <p class="subtitle">Pon a prueba tus conocimientos de JavaScript</p>
+
+        <label for="category" class="label">Selecciona categoría (opcional)</label>
+        <select id="category" class="select">
+          <option value="general">General</option>
+          <option value="basico">Básico</option>
+          <option value="dom">DOM</option>
+        </select>
+
+        <button id="start-btn" class="btn primary">Comenzar Quiz</button>
+      </section>
+
+      <!-- Pantalla de pregunta -->
+      <section id="quiz-screen" class="card hidden">
+        <div class="top-row">
+          <div id="question-counter" class="small">Pregunta 1 de 5</div>
+          <div class="progress" aria-hidden="true">
+            <div id="progress-bar" class="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+
+        <h2 id="question-text" class="question">Texto de la pregunta</h2>
+
+        <div id="options" class="options">
+          <!-- Opciones generadas dinámicamente -->
+        </div>
+      </section>
+
+      <!-- Pantalla de resultados -->
+      <section id="result-screen" class="card hidden center">
+        <h2>Resultados</h2>
+        <div class="stats">
+          <div class="stat card stat-score">
+            <div class="stat-label">Puntuación</div>
+            <div id="score-number" class="stat-number">0</div>
+            <div class="stat-sub">de <span id="total-number">0</span></div>
+          </div>
+
+          <div class="stat card stat-percent">
+            <div class="stat-label">Porcentaje</div>
+            <div id="percent-number" class="stat-number">0%</div>
+          </div>
+
+          <div class="stat card stat-message">
+            <div class="stat-label">Mensaje</div>
+            <div id="message-text" class="stat-number">—</div>
+          </div>
+        </div>
+
+        <button id="retry-btn" class="btn secondary">Reintentar</button>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
