@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuidando a Taco - Tamagotchi con IA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🐱 Cuidando a Taco</h1>
+        <p class="subtitle">Tamagotchi con IA básica</p>
+
+        <!-- Mascota -->
+        <div class="pet-display">
+            <div class="pet-avatar" id="petAvatar">🐱</div>
+            <div class="pet-name">Taco</div>
+            <div class="pet-thought" id="petThought">¡Hola! Soy Taco</div>
+        </div>
+
+        <!-- Estados de Taco -->
+        <div class="stats-container">
+            <div class="stat">
+                <label>🍕 Hambre</label>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="hambreBar"></div>
+                </div>
+                <span id="hambreValue">50</span>%
+            </div>
+
+            <div class="stat">
+                <label>⚡ Energía</label>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="energiaBar"></div>
+                </div>
+                <span id="energiaValue">60</span>%
+            </div>
+
+            <div class="stat">
+                <label>💛 Felicidad</label>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="felicidadBar"></div>
+                </div>
+                <span id="felicidadValue">70</span>%
+            </div>
+        </div>
+
+        <!-- Botones de acciones -->
+        <div class="actions-container">
+            <button class="action-btn" id="alimentarBtn" onclick="taco.alimentar()">
+                🍽️ Alimentar
+            </button>
+            <button class="action-btn" id="jugarBtn" onclick="taco.jugar()">
+                🎮 Jugar
+            </button>
+            <button class="action-btn" id="dormirBtn" onclick="taco.dormir()">
+                😴 Dormir
+            </button>
+            <button class="action-btn" id="acariciarBtn" onclick="taco.acariciar()">
+                👋 Acariciar
+            </button>
+        </div>
+
+        <!-- Info y estado -->
+        <div class="info-panel">
+            <h3>Pensamientos de Taco:</h3>
+            <div id="thoughtLog" class="thought-log"></div>
+        </div>
+
+        <!-- Botón reset -->
+        <button class="reset-btn" onclick="taco.reiniciar()">🔄 Reiniciar Juego</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

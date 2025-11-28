@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Detector de Palíndromos</title>
+	<style>
+		body{font-family:Arial,Helvetica,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#f7f7f7}
+		.card{background:#fff;padding:20px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.08);width:100%;max-width:520px}
+		h1{margin:0 0 12px;font-size:20px}
+		.controls{display:flex;gap:8px}
+		input[type="text"]{flex:1;padding:8px;border:1px solid #ccc;border-radius:4px}
+		button{padding:8px 12px;border:0;background:#0078d4;color:#fff;border-radius:4px;cursor:pointer}
+		button:active{transform:translateY(1px)}
+		#resultado{margin-top:12px;font-weight:600}
+	</style>
+</head>
+<body>
+	<main class="card" role="main">
+		<h1>Detector de Palíndromos</h1>
+		<p>Introduce una palabra o frase y pulsa <strong>Comparar</strong>.</p>
+		<div class="controls">
+			<input id="texto" type="text" placeholder="Ej.: anilina, reconocer, OJO" aria-label="Texto a comprobar">
+			<button id="btnComparar" type="button">Comparar</button>
+		</div>
+		<p id="resultado" aria-live="polite"></p>
+	</main>
+
+	<script src="palindromo.js"></script>
+	<script>
+		const input = document.getElementById('texto');
+		const btn = document.getElementById('btnComparar');
+		const resultado = document.getElementById('resultado');
+
+		function mostrarMensaje(text){ resultado.textContent = text }
+
+		btn.addEventListener('click', () => {
+			const texto = input.value;
+			if (!texto || !texto.trim()) { mostrarMensaje('Introduce algún texto.'); return }
+			try {
+				const es = esPalindromo(texto);
+				mostrarMensaje(es ? 'Es palíndromo ✅' : 'No es palíndromo ❌');
+			} catch (e) {
+				mostrarMensaje('Error al comprobar el texto.');
+				console.error(e);
+			}
+		});
+
+		input.addEventListener('keydown', (e) => { if (e.key === 'Enter') btn.click(); });
+	</script>
+</body>
+</html>
+

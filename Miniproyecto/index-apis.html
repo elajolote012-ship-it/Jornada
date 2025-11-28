@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIs - Menú Principal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .api-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .api-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .category {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-bottom: 15px;
+            width: fit-content;
+            font-weight: bold;
+        }
+
+        .api-card h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .api-card p {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .description {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .api-link {
+            color: #667eea;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .api-link a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .api-link a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .back-btn {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-btn a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-btn a:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌐 APIs Disponibles</h1>
+            <p>Selecciona una API para explorar</p>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Perros API -->
+            <div class="api-card">
+                <div>
+                    <span class="category">🐾 ANIMALES</span>
+                    <h2>🐕 Dog API</h2>
+                    <p class="description">Imágenes aleatorias de perros por raza</p>
+                    <p><strong>Proyecto:</strong> Galería de perros aleatorios</p>
+                    <div class="api-link">
+                        <strong>URL:</strong> <a href="https://dog.ceo/dog-api/" target="_blank">dog.ceo</a>
+                    </div>
+                </div>
+                <a href="perros/index.html" class="btn">Ir a Dog API →</a>
+            </div>
+
+            <!-- Gatos API -->
+            <div class="api-card">
+                <div>
+                    <span class="category">🐾 ANIMALES</span>
+                    <h2>🐱 Cat Facts API</h2>
+                    <p class="description">Datos curiosos sobre gatos</p>
+                    <p><strong>Proyecto:</strong> Generador de datos curiosos</p>
+                    <div class="api-link">
+                        <strong>URL:</strong> <a href="https://catfact.ninja/" target="_blank">catfact.ninja</a>
+                    </div>
+                </div>
+                <a href="gatos/index.html" class="btn">Ir a Cat Facts →</a>
+            </div>
+
+            <!-- Libros API -->
+            <div class="api-card">
+                <div>
+                    <span class="category">📚 LIBROS Y LECTURA</span>
+                    <h2>📖 Open Library</h2>
+                    <p class="description">Buscar libros, autores y portadas</p>
+                    <p><strong>Proyecto:</strong> Buscador de libros con portadas</p>
+                    <div class="api-link">
+                        <strong>URL:</strong> <a href="https://openlibrary.org/developers/api" target="_blank">openlibrary.org</a>
+                    </div>
+                </div>
+                <a href="libros/index.html" class="btn">Ir a Open Library →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
